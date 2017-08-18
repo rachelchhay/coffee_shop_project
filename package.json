@@ -1,0 +1,20 @@
+{
+  "name": "coffee_shop_project",
+  "version": "1.0.0",
+  "description": "GA Project 3",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachelchhay/coffee_shop_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachelchhay/coffee_shop_project/issues"
+  },
+  "homepage": "https://github.com/rachelchhay/coffee_shop_project#readme"
+}
