@@ -4,3 +4,5 @@ GA Project 3
 
 Rachel Chhay
 Rick Neely
+Sarah Anderson
+
