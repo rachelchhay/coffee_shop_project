@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Coffeeshops = require('../models/coffeeshops.js');
+const yelp = require('../bin/yelp.js')
 
 router.get('/', function(req, res){
     Coffeeshops.find({}, function(err, foundCoffeeshops){
