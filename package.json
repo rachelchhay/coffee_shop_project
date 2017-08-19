@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/rachelchhay/coffee_shop_project/issues"
   },
-  "homepage": "https://github.com/rachelchhay/coffee_shop_project#readme"
+  "homepage": "https://github.com/rachelchhay/coffee_shop_project#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.7"
+  }
 }
