@@ -7,12 +7,16 @@
     <script src="/js/app.js" charset="utf-8"></script>
     <!-- <link rel="stylesheet" href="/css/main.css" /> -->
   </head>
+
+  <!-- MAIN PAGE - CREATE COFFESHOP PAGE -->
+
+
   <body ng-controller ="MyController as ctrl">
  </h3>
     <div class="coffeeList">
 <uL>
   <li ng-repeat="coffeeshop in ctrl.coffeeshops">
-    <span ng-click="ctrl.updateCoffeeshop(coffeeshop);"><h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5>  </span>
+    <h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5><h6>Created By: <a href="/user/user._id">{{user.name}}</a>
     <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
     <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
         <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
@@ -33,6 +37,7 @@
       </form>
     </li>
   </ul>
+  <a href="/createlogin.html">create new user account</a>
 </div>
   </body>
 </html>

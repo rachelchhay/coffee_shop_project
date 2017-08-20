@@ -9,6 +9,9 @@ app.use(express.static('public'));
 const coffeeshopsController = require('./controllers/coffeeshops.js');
 app.use('/coffeeshops', coffeeshopsController);
 
+const UsersController = require('./controllers/user.js');
+app.use('/user', UsersController);
+
 mongoose.connect('mongodb://localhost:27017/coffeeshop', {
   useMongoClient: true
 });

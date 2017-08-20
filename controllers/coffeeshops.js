@@ -29,3 +29,6 @@ router.put('/:id', (req, res)=>{
 });
 
 module.exports = router;
+
+
+//ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
