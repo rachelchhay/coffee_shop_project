@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/coffeeshop', {
 });
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongo');
+    console.log('===================================');
 });
 
 app.listen(3000, function(){

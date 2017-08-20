@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Coffeeshops = require('../models/coffeeshops.js');
-const yelp = require('../bin/yelp.js')
+const getYelpResponse = require('../bin/yelp.js');
 
 router.get('/', function(req, res){
     Coffeeshops.find({}, function(err, foundCoffeeshops){
@@ -27,5 +27,11 @@ router.put('/:id', (req, res)=>{
         res.json(updatedCoffeeshop);
     });
 });
+
+// Yelp Response route ========================
+
+router.get('/getYelpResponse', (req, res) => {
+  getYelpResponse(res);
+})
 
 module.exports = router;
