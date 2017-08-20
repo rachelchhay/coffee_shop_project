@@ -6,6 +6,21 @@ app.controller('MyController', ['$http', function($http) {
   this.coffeeshops = [];
   this.indexOfEditFormToShow = 0;
 
+  this.getYelpResponse = function(){
+    $http({
+      method: 'GET',
+      url: '/coffeeshops/getYelpResponse'
+    }).then(
+      function(response){
+        console.log(response);
+        controller.coffeeshops = response.data;
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+
 
   this.getCoffeeshops =function(){
 
