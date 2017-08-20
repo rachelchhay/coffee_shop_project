@@ -12,7 +12,7 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops/getYelpResponse'
     }).then(
       function(response){
-        console.log(response);
+        // console.log(response);
         controller.coffeeshops = response.data;
       },
       function(error){
@@ -122,4 +122,5 @@ app.controller('MyController', ['$http', function($http) {
    }
 
   this.getCoffeeshops();
+  this.getYelpResponse();
 }])

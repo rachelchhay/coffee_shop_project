@@ -10,7 +10,7 @@
   <body ng-controller ="MyController as ctrl">
  </h3>
     <div class="coffeeList">
-<uL>
+<ul>
   <li ng-repeat="coffeeshop in ctrl.coffeeshops">
     <span ng-click="ctrl.updateCoffeeshop(coffeeshop);"><h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5>  </span>
     <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
@@ -23,6 +23,12 @@
           </form>
         </li>
       </ul>
+
+      <ul>
+        <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">{{ coffeeshop }}</li>
+      </ul>
+
+
   </div>
       <form ng-submit="ctrl.createCoffeeshop()">
         <h4> Recommend a New Shop!</h4>
