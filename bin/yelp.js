@@ -18,16 +18,16 @@ const getYelpResponse = (res) => {
     res.send(data)
   }
 
-    let yelpResponse;
+    let yelpResponse = [];
 
     client.search({
       term:'coffee',
       location: 'san francisco, ca'
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
-        yelpResponse = response.jsonBody.businesses[i].name
-        console.log(yelpResponse);
+        yelpResponse.push(response.jsonBody.businesses[i].name)
       }
+      res.send(yelpResponse);
     }).catch(e => {
       console.log(e);
     });
