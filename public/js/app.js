@@ -36,7 +36,7 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops',
       data: {
         term: this.term,
-        yelpLocation: this.yelpLocation
+        location: this.yelpLocation
       }
     }).then(
       function(response){
@@ -74,7 +74,7 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops',
       data: {
         name: this.name,
-        location: this.location,
+        coffeeLocation: this.coffeeLocation,
         description: this.description
         // freeWifi: true,
         // drivethru:true
