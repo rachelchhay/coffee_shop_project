@@ -5,6 +5,7 @@ app.controller('MyController', ['$http', function($http) {
   const controller=this;
   this.coffeeshops = [];
   this.indexOfEditFormToShow = 0;
+  this.yelpCoffeeshops = [];
 
   this.getYelpResponse = function(){
     $http({
@@ -13,7 +14,7 @@ app.controller('MyController', ['$http', function($http) {
     }).then(
       function(response){
         // console.log(response);
-        controller.coffeeshops = response.data;
+        controller.yelpCoffeeshops = response.data;
       },
       function(error){
         console.log(error);
