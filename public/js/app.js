@@ -3,9 +3,16 @@ const app = angular.module('MyApp', []);
 app.controller('MyController', ['$http', function($http) {
 
   const controller=this;
+
+  //COFFESHOP FUNCTIONS  -- WORKING///
+  //-------//
   this.coffeeshops = [];
+
+  this.indexOfUserEditFormToShow = 0;
+
   this.indexOfEditFormToShow = 0;
   this.yelpCoffeeshops = [];
+
 
 // Yelp Response =========================
   this.getYelpResponse = function(){
@@ -145,4 +152,5 @@ app.controller('MyController', ['$http', function($http) {
 
   this.getCoffeeshops();
   this.getYelpResponse();
+
 }])
