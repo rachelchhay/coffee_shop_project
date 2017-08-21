@@ -28,7 +28,7 @@ const getYelpResponse = (res) => {
     let yelpResponse = [];
 
     client.search({
-      term: "coffee",
+      term: 'coffee',
       location: 'san francisco, ca'
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
