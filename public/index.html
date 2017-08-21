@@ -26,6 +26,11 @@
 
       <!-- Yelp API response. Works but gives dup ERR -->
 
+      <form class="search-form">
+        Search Yelp: <input type="text" class="search-input">
+        <input type="submit" value="Search" class="submit-btn">
+      </form>
+
       <ul>
         <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">{{ coffeeshop }}</li>
       </ul>
