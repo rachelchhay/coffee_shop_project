@@ -7,6 +7,7 @@ app.controller('MyController', ['$http', function($http) {
   this.indexOfEditFormToShow = 0;
   this.yelpCoffeeshops = [];
 
+// Yelp Response =========================
   this.getYelpResponse = function(){
     $http({
       method: 'GET',
@@ -22,6 +23,26 @@ app.controller('MyController', ['$http', function($http) {
     )
   }
 
+  this.getSearch = function(){
+    $http({
+      method: 'POST',
+      url: '/coffeeshops',
+      data: {
+        term: this.term,
+        yelpLocation: this.yelpLocation
+      }
+    }).then(
+      function(response){
+        response.data
+        console.log(response.data);
+      }, function(error){
+        console.log(error);
+      }
+    )
+  }
+
+
+// End of Yelp Response ===================
 
   this.getCoffeeshops =function(){
 
