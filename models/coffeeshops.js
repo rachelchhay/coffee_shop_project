@@ -9,6 +9,6 @@ const coffeeshopSchema = mongoose.Schema({
 
 });
 
-const Coffeeshops = mongoose.model('Coffeeshop', coffeeshopSchema);
+const Coffeeshop = mongoose.model('Coffeeshop', coffeeshopSchema);
 
-module.exports = Coffeeshops;
+module.exports = Coffeeshop;
