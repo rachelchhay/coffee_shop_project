@@ -7,8 +7,14 @@ app.controller('MyController', ['$http', function($http) {
   //COFFESHOP FUNCTIONS  -- WORKING///
   //-------//
   this.coffeeshops = [];
+
   this.indexOfUserEditFormToShow = 0;
 
+  this.indexOfEditFormToShow = 0;
+  this.yelpCoffeeshops = [];
+
+
+// Yelp Response =========================
   this.getYelpResponse = function(){
     $http({
       method: 'GET',
@@ -16,7 +22,7 @@ app.controller('MyController', ['$http', function($http) {
     }).then(
       function(response){
         // console.log(response);
-        controller.coffeeshops = response.data;
+        controller.yelpCoffeeshops = response.data;
       },
       function(error){
         console.log(error);
@@ -24,6 +30,26 @@ app.controller('MyController', ['$http', function($http) {
     )
   }
 
+  this.getSearch = function(){
+    $http({
+      method: 'POST',
+      url: '/coffeeshops',
+      data: {
+        term: this.term,
+        yelpLocation: this.yelpLocation
+      }
+    }).then(
+      function(response){
+        response.data
+        console.log(response.data);
+      }, function(error){
+        console.log(error);
+      }
+    )
+  }
+
+
+// End of Yelp Response ===================
 
   this.getCoffeeshops =function(){
 

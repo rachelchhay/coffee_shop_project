@@ -15,8 +15,13 @@
  </h3>
     <div class="coffeeList">
 <ul>
+<<<<<<< HEAD
   <li ng-repeat="coffeeshop in ctrl.coffeeshops">
     <h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5><h6>Created By: <a href="/user/user._id">{{user.name}}</a>
+=======
+  <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
+    <span ng-click="ctrl.updateCoffeeshop(coffeeshop);"><h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5>  </span>
+>>>>>>> f2fa5d2f5090e488be1835deefddbf3f7b80aaa3
     <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
     <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
         <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
@@ -28,12 +33,19 @@
         </li>
       </ul>
 
-      <!-- Yelp API response. Works but gives dup ERR -->
+      <!-- Yelp API response. -->
+
+      <form ng-submit="ctrl.getSearch()" class="search-form">
+        Search Yelp: <input type="text" placeholder="search term" class="search-input" ng-model="ctrl.term">
+        Location: <input type="text" placeholder="city, state" ng-model="ctrl.yelpLocation">
+        <input type="submit" value="Search" class="submit-btn">
+      </form>
 
       <ul>
-        <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">{{ coffeeshop }}</li>
+        <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index">{{ yelpCoffeeshop }}</li>
       </ul>
 
+      <!-- End of Yelp Response -->
 
   </div>
       <form ng-submit="ctrl.createCoffeeshop()">

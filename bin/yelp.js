@@ -12,6 +12,13 @@ const client = yelp.client('oJ5UEBNgziEmy5_wUULQqDi1AIUu9Ew1EZ17InQEV-1uO_ZN3gw7
 
 // Everything is inside the getYelpResponse function, which is not being called in this file
 
+// const submit = document.querySelector(".submit-btn");
+// const coffeeshop = document.getElementsByClassName('search-input').textContent;
+//
+// submit.addEventListener("click", () => {
+//   alert("Worked!");
+// });
+
 const getYelpResponse = (res) => {
 
   const response = (res, data) => {
@@ -21,7 +28,7 @@ const getYelpResponse = (res) => {
     let yelpResponse = [];
 
     client.search({
-      term:'coffee',
+      term: 'coffee',
       location: 'san francisco, ca'
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
