@@ -15,7 +15,7 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops/getYelpResponse'
     }).then(
       function(response){
-        console.log(response);
+        // console.log(response);
         controller.coffeeshops = response.data;
       },
       function(error){
@@ -124,95 +124,7 @@ app.controller('MyController', ['$http', function($http) {
      );
    }
 
+  this.getCoffeeshops();
+  this.getYelpResponse();
 
-
-
-
-//END COFFESHOP FUNCTIONS///
-//-------//
-//========================
-
-//START USER FUNCTIONS  --WORKING//
-
-this.user = [];
-this.indexOfEditFormToShow = 0;
-
-
-this.getUsers =function(){
-
-  $http({
-    method: 'GET',
-    url: '/user'
-  }).then(
-    function(response){
-      controller.user=response.data
-
-    },
-    function(error){
-
-    }
-  )
-}
-
-this.createUser = function(){
-
-  $http({
-    method: 'POST',
-    url: '/user',
-    data: {
-      name: this.name,
-      location: this.location,
-      favoritedrink: this.favoritedrink,
-      work: true,
-      // freeWifi: true,
-      // drivethru:true
-      }
-    }).then(
-      function(response){
-        controller.getUsers();
-      },
-      function(error){
-
-      }
-  );
-}
-
-this.editUser = function(user){
-
-    $http({
-      method: 'PUT',
-      url: '/user/' + user._id,
-      data: {
-        name: this.updatedUsername,
-        location: this.updatedUserlocation,
-        description: this.updatedUserdrink
-        // work: true,
-        // freeWifi: true,
-        // drivethru:true
-      }
-    }).then(
-      function(response){
-        controller.getUsers();
-      },
-      function(error){
-
-      }
-    );
-  }
-
-this.deleteUser = function(user){
-
- $http({
-   method: 'DELETE',
-   url: '/user/' + user._id,
-
- }).then(
-   function(response){
-     controller.getUsers();
-   },
-   function(error){
-    }
- );
-}
-////END USER FUNCTIONS//
 }])
