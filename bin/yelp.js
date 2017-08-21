@@ -19,17 +19,14 @@ const client = yelp.client('oJ5UEBNgziEmy5_wUULQqDi1AIUu9Ew1EZ17InQEV-1uO_ZN3gw7
 //   alert("Worked!");
 // });
 
-const getYelpResponse = (res) => {
+const getYelpResponse = (res, term, location) => {
 
-  const response = (res, data) => {
-    res.send(data)
-  }
 
     let yelpResponse = [];
 
     client.search({
-      term: 'coffee',
-      location: 'san francisco, ca'
+      term: term,
+      location: location
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
         yelpResponse.push(response.jsonBody.businesses[i].name)
