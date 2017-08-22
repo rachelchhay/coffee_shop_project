@@ -9,11 +9,12 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // EXPRESS-SESSION  =======================
-app.use(session)({
-  secret: "Shh...it's a secret",
-  resave: false,
-  saveUninitialized: false
-});
+app.use(session({
+    secret: "this is a random string secret",
+    resave: false,
+    saveUninitialized: false
+
+}));
 
 
 
@@ -23,8 +24,6 @@ app.use('/coffeeshops', coffeeshopsController);
 const UsersController = require('./controllers/user.js');
 app.use('/user', UsersController);
 
-const loginRoutes = require('./controllers/login.js');
-app.use('/login', loginRoutes);
 
 mongoose.connect('mongodb://localhost:27017/coffeeshop', {
   useMongoClient: true
