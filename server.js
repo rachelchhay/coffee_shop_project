@@ -2,9 +2,16 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const Login = require('./models/login.js');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+// PASSPORT CONFIGURATION =======================
+
+
 
 const coffeeshopsController = require('./controllers/coffeeshops.js');
 app.use('/coffeeshops', coffeeshopsController);

@@ -30,9 +30,9 @@ router.put('/:id', (req, res)=>{
 
 // Yelp Response route ========================
 
-router.get('/getYelpResponse', (req, res) => {
+router.post('/getYelpResponse', (req, res) => {
   console.log('req.body: ', req.body);
-  getYelpResponse(res, req.body.term, req.body.yelpLocation);
+  getYelpResponse(res, 'coffee', req.body);
 })
 
 module.exports = router;
