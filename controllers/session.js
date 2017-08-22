@@ -3,16 +3,12 @@ const router  = express.Router();
 const User    = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 
-router.get('/login', (req, res, next) =>{
+router.get('/', (req, res, next) =>{
+  User.find({}, (err, foundUsers) => {
+    res.json(foundUsers);
+  });
+});
 
-  res.render('users/login.ejs', {message: req.session.message || ''})
-})
-
-
-
-router.get('/register', (req, res, next) => {
-  res.render('users/register.ejs', {})
-})
 
 router.post('/login', (req, res, next) => {
 
@@ -25,9 +21,8 @@ router.post('/login', (req, res, next) => {
                 req.session.username = req.body.username;
                 req.session.logged   = true;
                 console.log(req.session, req.body)
-                // res.send(req.session.username);
+                res.send(req.session.username);
 
-                res.redirect('/authors')
             } else {
               console.log('else in bcrypt compare')
               req.session.message = 'Username or password are incorrect';
