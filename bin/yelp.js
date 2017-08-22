@@ -19,18 +19,19 @@ const client = yelp.client('oJ5UEBNgziEmy5_wUULQqDi1AIUu9Ew1EZ17InQEV-1uO_ZN3gw7
 //   alert("Worked!");
 // });
 
-const getYelpResponse = (res, term, location) => {
+const getYelpResponse = (res, term, body) => {
 
 
     let yelpResponse = [];
 
     client.search({
       term: term,
-      location: location
+      location: body.location
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
         yelpResponse.push(response.jsonBody.businesses[i].name)
       }
+      console.log(yelpResponse);
       res.send(yelpResponse);
     }).catch(e => {
       console.log(e);
