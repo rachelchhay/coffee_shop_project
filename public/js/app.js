@@ -33,25 +33,6 @@ app.controller('MyController', ['$http', function($http) {
     )
   }
 
-  // this.getSearch = function(){
-  //   $http({
-  //     method: 'POST',
-  //     url: '/coffeeshops/getYelpResponse',
-  //     data: {
-  //       term: this.term,
-  //       location: this.yelpLocation
-  //     }
-  //   }).then(
-  //     function(response){
-  //       response.data
-  //       console.log(response.data);
-  //     }, function(error){
-  //       console.log(error);
-  //     }
-  //   )
-  // }
-
-
 // End of Yelp Response ===================
 
   this.getCoffeeshops =function(){
