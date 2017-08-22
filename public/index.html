@@ -37,11 +37,10 @@
       </ul>
 
       <!-- Yelp API response. -->
-
-      <form ng-submit="ctrl.getYelpResponse()" class="search-form">
-        <!-- Search Yelp: <input type="text" placeholder="search term" class="search-input" ng-model="ctrl.term"> -->
+      <h3>Search for a coffee shop near you:</h3>
+      <form ng-submit="ctrl.getYelpResponse()">
         Location: <input type="text" placeholder="city, state" ng-model="ctrl.yelpLocation">
-        <input type="submit" value="Search" class="submit-btn">
+        <input type="submit" value="Search">
       </form>
 
       <ul>
