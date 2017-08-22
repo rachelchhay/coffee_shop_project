@@ -6,3 +6,6 @@ Rachel Chhay
 Rick Neely
 Sarah Anderson
 
+image resources:
+http://www.freeiconspng.com/img/13696
+

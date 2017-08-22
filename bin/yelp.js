@@ -10,14 +10,8 @@ const token = yelp.accessToken('HE07TPuDAVs_O6pJsI9z6g', 'vX6oRVnFpWz2rF22RBCmxG
 
 const client = yelp.client('oJ5UEBNgziEmy5_wUULQqDi1AIUu9Ew1EZ17InQEV-1uO_ZN3gw7jESfs7LO6cABvf5IXluKmd_TzgZUuHwhLMZ7SP1IDtpjVsM82UZOun0CD_6sremos4E0NL2YWXYx');
 
-// Everything is inside the getYelpResponse function, which is not being called in this file
+// Everything is inside the getYelpResponse function, which is being called in controllers -> coffeeshops.js
 
-// const submit = document.querySelector(".submit-btn");
-// const coffeeshop = document.getElementsByClassName('search-input').textContent;
-//
-// submit.addEventListener("click", () => {
-//   alert("Worked!");
-// });
 
 const getYelpResponse = (res, term, body) => {
 
