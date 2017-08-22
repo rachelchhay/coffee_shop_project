@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Login = require('./models/login.js');
+const User = require('./models/user.js');
 const session = require('express-session');
 
 app.use(bodyParser.json());
@@ -23,6 +23,9 @@ app.use('/coffeeshops', coffeeshopsController);
 
 const UsersController = require('./controllers/user.js');
 app.use('/user', UsersController);
+
+const sessionController = require('./controllers/session.js');
+app.use('/login', sessionController);
 
 
 mongoose.connect('mongodb://localhost:27017/coffeeshop', {
