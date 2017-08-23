@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Coffeeshops = require('../models/coffeeshops.js');
 const getYelpResponse = require('../bin/yelp.js');
+// const launchLogin = require('../models/showLogin.js');
+
 
 router.get('/', function(req, res){
     Coffeeshops.find({}, function(err, foundCoffeeshops){
@@ -35,7 +37,12 @@ router.post('/getYelpResponse', (req, res) => {
   getYelpResponse(res, 'coffee', req.body);
 })
 
-module.exports = router;
-
 
 //ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
+//
+router.post('/showLogin', (req, res) => {
+  console.log('hello');
+  res.send();
+})
+
+module.exports = router;
