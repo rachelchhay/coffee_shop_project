@@ -12,7 +12,29 @@ app.controller('MyController', ['$http', function($http) {
 
   this.indexOfEditFormToShow = 0;
   this.yelpCoffeeshops = [];
+  this.launchLogin = false;
 
+  // Show Login =========================
+    this.showLogin = function(){
+      $http({
+        method: 'POST',
+        url: '/coffeeshops/showLogin'
+        // data: {
+        //   launchLogin: this.launchLogin
+        // }
+      }).then(
+        function(response){
+          controller.launchLogin = true;
+          console.log('this works');
+          showLogin();
+        },
+        function(error){
+          console.log(error);
+        }
+      )
+    }
+
+  // End of show login ===================
 
 // Yelp Response =========================
   this.getYelpResponse = function(){

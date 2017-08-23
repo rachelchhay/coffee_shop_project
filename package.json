@@ -22,6 +22,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "modal": "^1.2.0",
     "mongoose": "^4.11.7",
     "yelp-fusion": "^1.0.3"
   }

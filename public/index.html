@@ -15,9 +15,26 @@
   <body ng-controller ="MyController as ctrl">
     <h4><a href ng-click="ctrl.showLogin()">Log In / Register</a></h4>
 <!-- log in forms -->
+    <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
+      <h4>Login</h4>
+      User Name: <input type="text"/>
+      Password: <input type="text"/>
+      <input type= "Submit"  value="Log In"></h6>
+    </form>
+
+    <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
+      <h4>Register</h4>
+      Name: <input type="text"/>
+      User Name: <input type="text"/>
+      Password: <input type="text"/>
+      Repeat Password: <input type="text/">
+      <input type= "Submit"  value="Register"></h6>
+    </form>
+
+
 
     <form ng-submit="ctrl.login()">
-      <h4>Login</h4>
+      <h4>Login 2</h4>
       User Name: <input type="text"  ng-model="ctrl.userName"/>
       Password: <input type="text"  ng-model="ctrl.password"/>
       <input type= "Submit"  value="Log In"></h6>
