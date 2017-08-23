@@ -19,9 +19,6 @@ app.controller('MyController', ['$http', function($http) {
       $http({
         method: 'POST',
         url: '/coffeeshops/showLogin'
-        // data: {
-        //   launchLogin: this.launchLogin
-        // }
       }).then(
         function(response){
           controller.launchLogin = true;

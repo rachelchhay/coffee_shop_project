@@ -24,6 +24,9 @@ app.use('/coffeeshops', coffeeshopsController);
 const UsersController = require('./controllers/user.js');
 app.use('/user', UsersController);
 
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
+
 
 mongoose.connect('mongodb://localhost:27017/coffeeshop', {
   useMongoClient: true
