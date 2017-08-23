@@ -47,9 +47,11 @@
       <ul>
         <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
           <span ng-click="ctrl.updateCoffeeshop(coffeeshop);">
-            <h5>Shop Name: {{ coffeeshop.name }}</h5>
-            <h5>Location: {{ coffeeshop.location }}</h5>
-            <h5>Description: {{ coffeeshop.description }}</h5></span>
+            <h5>Coffee Shop Name: {{ coffeeshop.name }}</h5>
+            <h5>Rating: {{ coffeeshop.rating }}</h5>
+            <h5>Price: {{ coffeeshop.price }}</h5>
+            <h5>Adsdress: {{ coffeeshop.address1}} </h5>
+          </span>
             <h6>Created By: <a href="/user/user._id">{{user.name}}</a></h6><br/>
             <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
             <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
