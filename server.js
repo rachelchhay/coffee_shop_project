@@ -30,7 +30,9 @@ const sessionController = require('./controllers/session.js');
 app.use('/session', sessionController);
 
 var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/coffeeshop';
-mongoose.connect(mongoUri);
+mongoose.connect(mongoUri, {
+  useMongoClient: true
+});
 
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongo');

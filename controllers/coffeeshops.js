@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Coffeeshops = require('../models/coffeeshops.js');
 const getYelpResponse = require('../bin/yelp.js');
+hLogin = require('../models/showLogin.js');
 
-const Users = require('../models/user.js');
 
 
 router.get('/', function(req, res){
