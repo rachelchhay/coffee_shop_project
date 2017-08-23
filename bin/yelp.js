@@ -11,7 +11,10 @@ const token = yelp.accessToken(process.env.YELP_TOKEN).then(response => {
 const client = yelp.client(process.env.YELP_CLIENT);
 
 // Everything is inside the getYelpResponse function, which is being called in controllers -> coffeeshops.js
-console.log(process.env.YELP_TOKEN);
+
+
+// console.log(process.env.YELP_TOKEN);
+//ENABLE line 16 to test the API key in terminal [node bin/dev]//
 
 const getYelpResponse = (res, term, body) => {
 

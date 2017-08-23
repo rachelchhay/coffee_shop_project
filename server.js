@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Login = require('./models/login.js');
+const User = require('./models/user.js');
 const session = require('express-session');
 require('dotenv').config()
 
@@ -26,18 +26,20 @@ app.use('/coffeeshops', coffeeshopsController);
 const UsersController = require('./controllers/user.js');
 app.use('/user', UsersController);
 
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
 
-mongoose.connect('mongodb://localhost:27017/coffeeshop', {
-  useMongoClient: true
-});
+var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/coffeeshop';
+mongoose.connect(mongoUri);
+
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongo');
     console.log('===================================');
 });
 
-app.listen(3000, function(){
-    console.log('===================================');
-    console.log('Coffee Shop Project is listening...');
-    console.log('===================================');
 
-});
+port = process.env.PORT || 3000;
+app.listen(port);
+    console.log('===================================');
+    console.log('Server running on port: ' + port);
+    console.log('===================================');

@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/rachelchhay/coffee_shop_project#readme",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
