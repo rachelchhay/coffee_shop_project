@@ -17,8 +17,11 @@ app.controller('MyController', ['$http', function($http) {
 // Yelp Response =========================
   this.getYelpResponse = function(){
     $http({
-      method: 'GET',
-      url: '/coffeeshops/getYelpResponse'
+      method: 'POST',
+      url: '/coffeeshops/getYelpResponse',
+      data: {
+        location: this.yelpLocation
+      }
     }).then(
       function(response){
         // console.log(response);
@@ -29,25 +32,6 @@ app.controller('MyController', ['$http', function($http) {
       }
     )
   }
-
-  this.getSearch = function(){
-    $http({
-      method: 'POST',
-      url: '/coffeeshops',
-      data: {
-        term: this.term,
-        yelpLocation: this.yelpLocation
-      }
-    }).then(
-      function(response){
-        response.data
-        console.log(response.data);
-      }, function(error){
-        console.log(error);
-      }
-    )
-  }
-
 
 // End of Yelp Response ===================
 
@@ -74,7 +58,7 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops',
       data: {
         name: this.name,
-        location: this.location,
+        coffeeLocation: this.coffeeLocation,
         description: this.description
         // freeWifi: true,
         // drivethru:true
@@ -235,6 +219,6 @@ $http({
 
 
   this.getCoffeeshops();
-  this.getYelpResponse();
+  // this.getYelpResponse();
 
 }])

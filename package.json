@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/rachelchhay/coffee_shop_project#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "express-session": "^1.15.5",
     "mongoose": "^4.11.7",
     "yelp-fusion": "^1.0.3"
   }

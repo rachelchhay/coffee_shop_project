@@ -2,15 +2,28 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const Login = require('./models/login.js');
+const session = require('express-session');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+// EXPRESS-SESSION  =======================
+app.use(session({
+    secret: "this is a random string secret",
+    resave: false,
+    saveUninitialized: false
+
+}));
+
+
 
 const coffeeshopsController = require('./controllers/coffeeshops.js');
 app.use('/coffeeshops', coffeeshopsController);
 
 const UsersController = require('./controllers/user.js');
 app.use('/user', UsersController);
+
 
 mongoose.connect('mongodb://localhost:27017/coffeeshop', {
   useMongoClient: true
