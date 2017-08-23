@@ -12,6 +12,72 @@ app.controller('MyController', ['$http', function($http) {
 
   this.indexOfEditFormToShow = 0;
   this.yelpCoffeeshops = [];
+  this.launchLogin = false;
+
+  // Show Login =========================
+    this.showLogin = function(){
+      $http({
+        method: 'POST',
+        url: '/coffeeshops/showLogin'
+      }).then(
+        function(response){
+          controller.launchLogin = true;
+          console.log('this works');
+          showLogin();
+        },
+        function(error){
+          console.log(error);
+        }
+      )
+    }
+
+  // End of show login ===================
+
+  // Login function ======================
+  this.login = function(username, password){
+    $http({
+      method: 'POST',
+      url: '/session/login',
+      data: {
+        username: this.username,
+        password: this.password
+      }
+    }).then(
+      function(response){
+        console.log(response.data);
+        controller.foundUser = response.data;
+        controller.username = '';
+        controller.password = '';
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+  // Login function end===================
+
+  // Register function ===================
+  this.register = function(username, password){
+    $http({
+      method: 'POST',
+      url: '/session/register',
+      data: {
+        username: this.registerUsername,
+        password: this.registerPassword
+      }
+    }).then(
+      function(response){
+        console.log(response.data);
+        controller.createUser = response.data;
+        controller.registerUsername = '';
+        controller.registerPassword = '';
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+  // Register function end=================
 
   // Login function ======================
   this.login = function(username, password){
