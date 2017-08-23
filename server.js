@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Login = require('./models/login.js');
 const session = require('express-session');
+require('dotenv').config()
+
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
