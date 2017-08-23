@@ -1,5 +1,16 @@
 @import url('http://getbootstrap.com/dist/css/bootstrap.css');
 
 body {
+  background-image: url(http://i.imgur.com/5VlyDqY.jpg);
   background-color: tan;
+  color: white;
+}
+
+.loginLink {
+  text-align: right;
+  padding: 10px;
+}
+
+a {
+  color: white;
 }
