@@ -137,7 +137,7 @@ app.controller('MyController', ['$http', function($http) {
       }
     }).then(
       function(response){
-        // console.log(response);
+        console.log(response.data.name);
         controller.yelpCoffeeshops = response.data;
         controller.yelpLocation = '';
       },
