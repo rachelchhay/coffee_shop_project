@@ -2,13 +2,13 @@
 
 const yelp = require('yelp-fusion');
 
-const token = yelp.accessToken(process.env.YELP_TOKEN).then(response => {
+const token = yelp.accessToken(process.env.YELP_ID, process.env.YELP_SECRET).then(response => {
   // console.log(response.jsonBody.access_token);
 }).catch(e => {
   // console.log(e);
 });
 
-const client = yelp.client(process.env.YELP_CLIENT);
+const client = yelp.client(process.env.YELP_TOKEN);
 
 // Everything is inside the getYelpResponse function, which is being called in controllers -> coffeeshops.js
 
