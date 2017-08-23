@@ -9,12 +9,13 @@ router.get('/', function(req, res){
     });
 });
 
-router.post('/', (req,res)=>{
-  Users.create(req.body, function(err, createdUser){
 
-       res.json(createdUser);
-     });
-});
+router.post('/', (req,res)=>{
+    Users.create(req.body, function(err, createdUser){
+        res.json(createdUser);
+      });
+    });
+
 
 router.delete('/:id', function(req, res){
     Users.findByIdAndRemove(req.params.id, function(err, deletedUser){
