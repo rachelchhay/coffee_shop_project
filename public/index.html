@@ -15,13 +15,12 @@
  </h3>
     <div class="coffeeList">
 <ul>
-<<<<<<< HEAD
+
   <li ng-repeat="coffeeshop in ctrl.coffeeshops">
-    <h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5><h6>Created By: <a href="/user/user._id">{{user.name}}</a>
-=======
+    <h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5>
+    <a ng-repeat="user in ctrl.user"<h6>Created By: <a {{user.name}}</a>
   <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
     <span ng-click="ctrl.updateCoffeeshop(coffeeshop);"><h5>Shop Name: {{ coffeeshop.name }}</h5><h5>Location: {{ coffeeshop.location }}</h5><h5>Description: {{ coffeeshop.description }}</h5>  </span>
->>>>>>> f2fa5d2f5090e488be1835deefddbf3f7b80aaa3
     <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
     <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
         <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
