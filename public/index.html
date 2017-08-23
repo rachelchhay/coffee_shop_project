@@ -12,24 +12,33 @@
 
 
   <body ng-controller ="MyController as ctrl">
-    <h4><a href ng-click="ctrl.showLogin()">Log In / Register</a></h4>
+    <div class="container-fluid">
+      <h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6>
 <!-- log in forms -->
-
-  <modal>
-    <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
-      <h4>Login</h4>
-      User Name: <input type="text" ng-model="ctrl.username"/>
-      Password: <input type="password" ng-model="ctrl.password"/>
-      <input type= "Submit"  value="Log In">
-    </form>
-
-    <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
-      <h4>Register</h4>
-      User Name: <input type="text" ng-model="ctrl.registerUsername"/>
-      Password: <input type="password" ng-model="ctrl.registerPassword"/>
-      <input type= "Submit"  value="Register">
-    </form>
-  </modal>
+        <div class="row">
+          <div class="col-sm-3">&nbsp;</div>
+          <!-- <modal> -->
+          <div class="col-sm-3">
+              <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
+              <h4>Login</h4>
+              User Name: <input type="text" ng-model="ctrl.username"/><br/>
+              Password: <input type="password" ng-model="ctrl.password"/><br/>
+              <br/>
+              <input type= "Submit"  value="Log In">
+            </form>
+          </div>
+          <div class="col-sm-3">
+            <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
+              <h4>Register</h4>
+              User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
+              Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
+              <br/>
+              <input type= "Submit"  value="Register">
+            </form>
+          </div>
+          <!-- </modal> -->
+          <div class="col-sm-3">&nbsp;</div>
+        </div>
 
 
 <!-- end log in forms -->
@@ -72,6 +81,6 @@
       Description: <input type="text"  ng-model="ctrl.description" placeholder="Description"/>
       <input type= "Submit"  value="Add"></h6>
     </form>
-    <a href="/createlogin.html">create new user account</a>
+    <!-- <a href="/createlogin.html">create new user account</a> -->
   </body>
 </html>
