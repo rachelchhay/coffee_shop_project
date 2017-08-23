@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Login = require('./models/login.js');
+const User = require('./models/user.js');
 const session = require('express-session');
 
 app.use(bodyParser.json());
