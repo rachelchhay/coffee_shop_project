@@ -26,7 +26,7 @@ const getYelpResponse = (res, term, body) => {
       location: body.location
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
-        yelpResponse.push(response.jsonBody.businesses[i].name)
+        yelpResponse.push(response.jsonBody.businesses[i].name, response.jsonBody.businesses[i].rating, response.jsonBody.businesses[i].price, response.jsonBody.businesses[i].location.address1)
       }
       console.log(yelpResponse);
       res.send(yelpResponse);
