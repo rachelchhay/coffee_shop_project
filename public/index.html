@@ -15,30 +15,33 @@
     <div class="container-fluid">
       <h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6>
 <!-- log in forms -->
-        <div class="row">
-          <div class="col-sm-3">&nbsp;</div>
-          <!-- <modal> -->
-          <div class="col-sm-3">
-              <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
-              <h4>Login</h4>
-              User Name: <input type="text" ng-model="ctrl.username"/><br/>
-              Password: <input type="password" ng-model="ctrl.password"/><br/>
-              <br/>
-              <input type= "Submit"  value="Log In">
-            </form>
-          </div>
-          <div class="col-sm-3">
-            <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
-              <h4>Register</h4>
-              User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
-              Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
-              <br/>
-              <input type= "Submit"  value="Register">
-            </form>
-          </div>
-          <!-- </modal> -->
-          <div class="col-sm-3">&nbsp;</div>
-        </div>
+          <div ng-hide="ctrl.closeLoginWindow">
+            <div class="row">
+
+              <div class="col-sm-3">&nbsp;</div>
+              <!-- <modal> -->
+                <div class="col-sm-3">
+                  <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
+                    <h4>Login</h4>
+                    User Name: <input type="text" ng-model="ctrl.username"/><br/>
+                    Password: <input type="password" ng-model="ctrl.password"/><br/>
+                    <br/>
+                    <input ng-click="ctrl.hideLogin()" type="Submit"  value="Log In">
+                  </form>
+                </div>
+                <div class="col-sm-3">
+                  <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
+                    <h4>Register</h4>
+                    User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
+                    Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
+                    <br/>
+                    <input ng-click="ctrl.hideLogin()" type="Submit"  value="Register">
+                  </form>
+                </div>
+              </div>
+              <!-- </modal> -->
+              <div class="col-sm-3">&nbsp;</div>
+            </div>
 
 
 <!-- end log in forms -->
@@ -47,16 +50,18 @@
       <ul>
         <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
           <span ng-click="ctrl.updateCoffeeshop(coffeeshop);">
-            <h5>Shop Name: {{ coffeeshop.name }}</h5>
-            <h5>Location: {{ coffeeshop.location }}</h5>
-            <h5>Description: {{ coffeeshop.description }}</h5></span>
-            <h6>Created By: <a href="/user/user._id">{{user.name}}</a></h6><br/>
+            <h5>Coffee Shop Name: {{ coffeeshop.name }}</h5>
+            <h5>Rating: {{ coffeeshop.rating }}</h5>
+            <h5>Price: {{ coffeeshop.price }}</h5>
+            <h5>Address: {{ coffeeshop.address1 }}</h5>
+          </span>
             <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
             <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
             <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
-              <input type="text"  ng-model="ctrl.updatedName" placeholder="ctrl.this.name"/>
-              <input type="text"  ng-model="ctrl.updatedLocation" placeholder="ctrl.this.location"/>
-              <input type="text"  ng-model="ctrl.updatedDescription" placeholder="ctrl.this.description"/>
+              <input type="text"  ng-model="ctrl.updatedName" placeholder="name"/>
+              <input type="number"  ng-model="ctrl.updatedRating" placeholder="rating"/>
+              <input type="text"  ng-model="ctrl.updatedPrice" placeholder="price using $"/>
+              <input type="text" ng-model="ctrl.updatedAddress1" placeholder="address">
               <input type= "Submit"  value="Update shop">
             </form>
         </li>
@@ -76,9 +81,10 @@
     </div>
     <form ng-submit="ctrl.createCoffeeshop()">
       <h4> Recommend a New Shop!</h4>
-      Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/>
-      Location: <input type="text"  ng-model="ctrl.location" placeholder="Location"/>
-      Description: <input type="text"  ng-model="ctrl.description" placeholder="Description"/>
+      Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/>
+      Rating: <input type="number"  ng-model="ctrl.rating" placeholder="Rate out of 5"/>
+      Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/>
+      Address: <input type="text" ng-model="ctrl.address1" placeholder="Address">
       <input type= "Submit"  value="Add"></h6>
     </form>
     <!-- <a href="/createlogin.html">create new user account</a> -->

@@ -18,15 +18,35 @@ const client = yelp.client(process.env.YELP_TOKEN);
 
 const getYelpResponse = (res, term, body) => {
 
+  let yelpResponseName = [];
+  let yelpResponseRating = [];
+  let yelpResponsePrice = [];
+  let yelpResponseLocation = [];
 
-    let yelpResponse = [];
+  let yelpResponse = {
+    yelpResponseName,
+    yelpResponseRating,
+    yelpResponsePrice,
+    yelpResponseLocation
+  };
+
+
+
 
     client.search({
       term: term,
       location: body.location
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
-        yelpResponse.push(response.jsonBody.businesses[i].name)
+        // yelpResponse.push(response.jsonBody.businesses[i].name
+          // ,
+          // response.jsonBody.businesses[i].rating, response.jsonBody.businesses[i].price, response.jsonBody.businesses[i].location.address1
+        // )
+
+        yelpResponseName.push(response.jsonBody.businesses[i].name);
+        yelpResponseRating.push(response.jsonBody.businesses[i].rating);
+        yelpResponsePrice.push(response.jsonBody.businesses[i].price);
+        yelpResponseLocation.push(response.jsonBody.businesses[i].location.address1)
       }
       console.log(yelpResponse);
       res.send(yelpResponse);
@@ -35,7 +55,7 @@ const getYelpResponse = (res, term, body) => {
     });
 
     client.autocomplete({
-      text:'pizza'
+      text: body.location
     }).then(response => {
       for(let i =0; i < (response.jsonBody.terms).length; i++) {
         console.log(response.jsonBody.terms[i].text);

@@ -38,12 +38,16 @@ router.post('/getYelpResponse', (req, res) => {
   getYelpResponse(res, 'coffee', req.body);
 })
 
-
-//ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
-//
+// Show login ===========================
 router.post('/showLogin', (req, res) => {
   console.log('hello');
   res.send();
 })
+
+// end Show login ======================
+
+//ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
+//
+
 
 module.exports = router;

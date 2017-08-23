@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 
 const coffeeshopSchema = mongoose.Schema({
     name: String,
-    location: String,
-    description: String
-    // freeWifi: true,
-    // drivethru:true
+    rating: Number,
+    price: String,
+    address1: String
 
 });
 
