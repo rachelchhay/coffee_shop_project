@@ -139,6 +139,7 @@ app.controller('MyController', ['$http', function($http) {
       function(response){
         // console.log(response);
         controller.yelpCoffeeshops = response.data;
+        controller.yelpLocation = '';
       },
       function(error){
         console.log(error);
