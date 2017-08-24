@@ -6,9 +6,22 @@ const User = require('./models/user.js');
 const session = require('express-session');
 require('dotenv').config()
 
+//socket requires//
+// var server = require('http').Server(app);
+// var io = require('socket.io')(server);
+
+//End socket requires//
+
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+//socket route//
+// app.get('/', function(req, res){
+// res.sendFile(__dirname +'/index.html');
+// });
+//END socket route//
+
 
 // EXPRESS-SESSION  =======================
 app.use(session({
@@ -33,6 +46,16 @@ var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/coffeeshop'
 mongoose.connect(mongoUri, {
   useMongoClient: true
 });
+
+///socket io connectors//
+// io.on('connection', function(socket){
+//   socket.emit('news', { hello: 'world' });
+//   socket.on('chat message', function(msg){
+//     // io.emit('chat message', msg);
+//   });
+// });
+
+///END socket io connectors//
 
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongo');

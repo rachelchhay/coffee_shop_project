@@ -48,9 +48,9 @@
         <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
           <span ng-click="ctrl.updateCoffeeshop(coffeeshop);">
             <h5>Shop Name: {{ coffeeshop.name }}</h5>
-            <h5>Location: {{ coffeeshop.location }}</h5>
-            <h5>Description: {{ coffeeshop.description }}</h5></span>
-            <h6>Created By: <a href="/user/user._id">{{user.name}}</a></h6><br/>
+            <h5>Rating: {{ coffeeshop.rating }}</h5>
+            <h5>Price: {{ coffeeshop.price }}</h5></span>
+            <!-- <h6>Created By: <a href="/user/user._id">{{user.name}}</a></h6><br/> -->
             <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
             <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
             <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
@@ -84,5 +84,58 @@
       <input type= "Submit"  value="Add"></h6>
     </form>
     <!-- <a href="/createlogin.html">create new user account</a> -->
+
+
+<!-- //socket chat code below// -->
+
+    <style>
+        #chatbox {display: flex; padding: 20px; align-content: flex-start;}
+        { margin: 0; padding: 0; box-sizing: border-box; }
+        #chatbody { font: 13px Helvetica, Arial; background-color: azure;}
+        #chatform { background: red; padding: 3px; position: fixed; bottom: 0; height: 300px; width: 300px; }
+        #chatforminput { border: 0; padding: 10px; width: 300px; margin-right: .5%; }
+        #chatformbutton { width: 40px; background: rgb(130, 224, 255); border: none; padding: 10px; }*/
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+      </style>
+
+
+<div id="chatcheck">Show Chat: <input type="checkbox" ng-model="socketbox"></div></br>
+  <div id='testbox' ng-show="socketbox">
+    <ul id="messages"></ul>
+    <div id='chatbox'>
+      <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </div>
+  </div>
+
+  <script src="./index.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      console.log('testingsocket1');
+      var socket = io();
+      $('form').submit(function(){
+        console.log('testingsubmit');
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        console.log('testingsocketon');
+        $('#messages').append($('<li>').text(msg));
+      });
+    });
+  </script>
+
+  <!-- //end socket chat code// -->
+
+
   </body>
+
+
+
 </html>

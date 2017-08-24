@@ -14,3 +14,15 @@ body {
 a {
   color: white;
 }
+
+#chatcheck{
+float: right;
+}
+
+#testbox{
+  background-color: red;
+  width: 400px;
+  height: 300px;
+  padding: 20px;
+  float: right;
+}
