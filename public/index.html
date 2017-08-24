@@ -77,19 +77,24 @@
         <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index"><h5>{{ yelpCoffeeshop.name }}</h5>
         <h6>Rating: {{ yelpCoffeeshop.rating}}<br/>
         Price: {{ yelpCoffeeshop.price}}<br/>
-        Address: {{ yelpCoffeeshop.address1 }}</h6></li>
+        Address: {{ yelpCoffeeshop.address1 }}</h6>
+
+        <!-- Create shop button and form -->
+
+        <button type="button" ng-click="ctrl.indexOfCoffeeshop = $index">Add Coffeeshop</button>
+
+        <form ng-if="$index === ctrl.indexOfCoffeeshop" ng-submit="ctrl.createCoffeeshop()">
+          Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/> <br>
+          Rating: <input type="text"  ng-model="ctrl.rating" placeholder="Rate out of 5"/> <br>
+          Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/> <br>
+          Address: <input type="text" ng-model="ctrl.address1" placeholder="Address"> <br>
+          <input type= "Submit" value="Submit" >
+        </form>
+
+      </li>
       </ul>
 
       <!-- End of Yelp Response -->
     </div>
-    <form ng-submit="ctrl.createCoffeeshop()">
-      <h4> Recommend a New Shop!</h4>
-      Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/>
-      Rating: <input type="number"  ng-model="ctrl.rating" placeholder="Rate out of 5"/>
-      Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/>
-      Address: <input type="text" ng-model="ctrl.address1" placeholder="Address">
-      <input type= "Submit"  value="Add"></h6>
-    </form>
-    <!-- <a href="/createlogin.html">create new user account</a> -->
   </body>
 </html>
