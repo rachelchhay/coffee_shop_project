@@ -7,20 +7,18 @@ const session = require('express-session');
 require('dotenv').config()
 
 //socket requires//
-// var server = require('http').Server(app);
-// var io = require('socket.io')(server);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+//
+
 
 //End socket requires//
+
+console.log('server');
 
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
-
-//socket route//
-// app.get('/', function(req, res){
-// res.sendFile(__dirname +'/index.html');
-// });
-//END socket route//
 
 
 // EXPRESS-SESSION  =======================
@@ -52,13 +50,11 @@ mongoose.connect(mongoUri, {
 });
 
 ///socket io connectors//
-// io.on('connection', function(socket){
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('chat message', function(msg){
-//     // io.emit('chat message', msg);
-//   });
-// });
-
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
 ///END socket io connectors//
 
 mongoose.connection.once('open', ()=>{
@@ -66,9 +62,12 @@ mongoose.connection.once('open', ()=>{
     console.log('===================================');
 });
 
-
+//port connection for mongoose, CRUD, and API//
 const port = process.env.PORT || 3000;
-app.listen(port);
-    console.log('===================================');
-    console.log('Server running on port: ' + port);
-    console.log('===================================');
+
+//port connection for http-socket//
+http.listen(port, ()=>{
+  console.log('===================================');
+  console.log('Server running on port: ' + port);
+  console.log('===================================');
+});
