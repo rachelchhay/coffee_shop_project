@@ -7,6 +7,8 @@ const getYelpResponse = require('../bin/yelp.js');
 // const launchLogin = require('../models/showLogin.js');
 
 
+
+
 router.get('/', function(req, res){
     Coffeeshops.find({}, function(err, foundCoffeeshops){
         res.json(foundCoffeeshops);
