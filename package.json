@@ -27,5 +27,8 @@
     "mongoose": "^4.11.7",
     "socket.io": "^2.0.3",
     "yelp-fusion": "^1.0.3"
+  },
+  "engines": {
+    "node": "8.2.1"
   }
 }
