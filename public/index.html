@@ -55,14 +55,20 @@
             <h5>Address: {{ coffeeshop.address1 }} </h5>
 
             <button ng-if="ctrl.isLoggedIn" ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
-            <a href="#" ng-if="ctrl.isLoggedIn" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
-            <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
-              <input type="text"  ng-model="ctrl.updatedName" placeholder="name"/>
-              <input type="number"  ng-model="ctrl.updatedRating" placeholder="rating"/>
-              <input type="text"  ng-model="ctrl.updatedPrice" placeholder="price using $"/>
-              <input type="text" ng-model="ctrl.updatedAddress1" placeholder="address">
-              <input type= "Submit"  value="Update shop">
-            </form>
+
+            <a href="#" ng-if="ctrl.isLoggedIn" ng-click="ctrl.IndexOfEditFormToShow = $index; ctrl.openForm()">Edit this shop</a>
+
+            <div ng-hide="ctrl.hideForm">
+
+              <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
+                <input type="text"  ng-model="ctrl.updatedName" placeholder="name"/>
+                <input type="number"  ng-model="ctrl.updatedRating" placeholder="rating"/>
+                <input type="text"  ng-model="ctrl.updatedPrice" placeholder="price using $"/>
+                <input type="text" ng-model="ctrl.updatedAddress1" placeholder="address">
+                <input type= "Submit"  value="Update shop">
+              </form>
+            </div>
+
         </li>
       </ul>
 
@@ -80,17 +86,17 @@
 
         <!-- Create shop button and form -->
 
-        <button type="button" ng-click="ctrl.indexOfCoffeeshop = $index; ctrl.openCreateForm()">Add Coffeeshop</button>
+        <button type="button" ng-if="ctrl.isLoggedIn" ng-click="ctrl.indexOfCoffeeshop = $index; ctrl.openForm()">Add Coffeeshop</button>
 
         <div ng-hide="ctrl.hideForm">
 
-        <form ng-if="$index === ctrl.indexOfCoffeeshop" ng-submit="ctrl.createCoffeeshop()">
-          Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/> <br>
-          Rating: <input type="text"  ng-model="ctrl.rating" placeholder="Rate out of 5"/> <br>
-          Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/> <br>
-          Address: <input type="text" ng-model="ctrl.address1" placeholder="Address"> <br>
-          <input ng-click="ctrl.hideCreateForm()" type= "Submit" value="Submit" >
-        </form>
+          <form ng-if="$index === ctrl.indexOfCoffeeshop" ng-submit="ctrl.createCoffeeshop()">
+            Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/> <br>
+            Rating: <input type="text"  ng-model="ctrl.rating" placeholder="Rate out of 5"/> <br>
+            Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/> <br>
+            Address: <input type="text" ng-model="ctrl.address1" placeholder="Address"> <br>
+            <input type= "Submit" value="Submit" >
+          </form>
       </div>
       </li>
       </ul>

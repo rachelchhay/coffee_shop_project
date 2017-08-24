@@ -13,43 +13,14 @@ app.controller('MyController', ['$http', function($http) {
   this.indexOfCoffeeshop;
   this.openForm = true;
 
+  this.showLogin = function(){
+    this.launchLogin = true;
+  }
 
-  // Show Login =========================
-    this.showLogin = function(){
-      $http({
-        method: 'POST',
-        url: '/coffeeshops/showLogin'
-      }).then(
-        function(response){
-          controller.launchLogin = true;
-          console.log('this works');
-          showLogin();
-        },
-        function(error){
-          console.log(error);
-        }
-      )
-    }
+  this.hideLogin = function(){
+    this.closeLoginWindow = true;
+  }
 
-  // End of show login ===================
-
-  // Hide Login =========================
-    this.hideLogin = function(){
-      $http({
-        method: 'POST',
-        url: '/coffeeshops/showLogin'
-      }).then(
-        function(response){
-          controller.closeLoginWindow = true;
-          console.log('this works');
-        },
-        function(error){
-          console.log(error);
-        }
-      )
-    }
-
-  // End of hide login ===================
 
   // Login function ======================
   this.login = function(username, password){
@@ -62,16 +33,17 @@ app.controller('MyController', ['$http', function($http) {
       }
     }).then(
       function(response){
+        console.log("LOGIN DATA:");
         console.log(response.data);
-        // console.log(response.data.session.logged);
         controller.foundUser = response.data;
         controller.username = '';
         controller.password = '';
 
         if(response.data){
           controller.isLoggedIn = true;
+          controller.hideForm = false;
         }
-        hideLogin();
+        controller.hideLogin();
       },
       function(error){
         console.log(error);
@@ -91,11 +63,17 @@ app.controller('MyController', ['$http', function($http) {
       }
     }).then(
       function(response){
+        console.log("REGISTERED DATA:");
         console.log(response.data);
         controller.createUser = response.data;
         controller.registerUsername = '';
         controller.registerPassword = '';
-        hideLogin();
+
+        if(response.data){
+          controller.isLoggedIn = true;
+          controller.hideForm = false;
+        }
+        controller.hideLogin();
       },
       function(error){
         console.log(error);
@@ -104,51 +82,6 @@ app.controller('MyController', ['$http', function($http) {
   }
   // Register function end=================
 
-  // Login function ======================
-  this.login = function(username, password){
-    $http({
-      method: 'POST',
-      url: '/session/login',
-      data: {
-        username: this.username,
-        password: this.password
-      }
-    }).then(
-      function(response){
-        console.log(response.data);
-        controller.foundUser = response.data;
-        controller.username = '';
-        controller.password = '';
-      },
-      function(error){
-        console.log(error);
-      }
-    )
-  }
-  // Login function end===================
-
-  // Register function ===================
-  this.register = function(username, password){
-    $http({
-      method: 'POST',
-      url: '/session/register',
-      data: {
-        username: this.registerUsername,
-        password: this.registerPassword
-      }
-    }).then(
-      function(response){
-        console.log(response.data);
-        controller.createUser = response.data;
-        controller.registerUsername = '';
-        controller.registerPassword = '';
-      },
-      function(error){
-        console.log(error);
-      }
-    )
-  }
-  // Register function end=================
 
 
 // Yelp Response =========================
@@ -197,36 +130,10 @@ app.controller('MyController', ['$http', function($http) {
 
   // Create form function ==================
 
-  this.hideCreateForm = function(){
 
-    $http({
-      method: 'POST',
-      url: '/coffeeshops/createForm'
-    }).then(
-      function(response){
-        controller.hideForm = true;
-      },
-      function(error){
-        console.log(error);
-      }
-    )
+  this.openForm = function(){
+    this.hideForm = false;
   }
-
-  this.openCreateForm = function(){
-
-    $http({
-      method: 'POST',
-      url: '/coffeeshops/openForm'
-    }).then(
-      function(response){
-        controller.hideForm = false;
-      },
-      function(error){
-        console.log(error);
-      }
-    )
-  }
-
 
   this.createCoffeeshop = function(){
 
@@ -246,6 +153,7 @@ app.controller('MyController', ['$http', function($http) {
           controller.rating = ''
           controller.price = ''
           controller.address1 = ''
+          controller.hideForm = true;
         },
         function(error){
 
@@ -271,6 +179,7 @@ app.controller('MyController', ['$http', function($http) {
             controller.rating = ''
             controller.price = ''
             controller.address1 = ''
+            controller.hideForm = true;
           },
           function(error){
 
@@ -292,89 +201,6 @@ app.controller('MyController', ['$http', function($http) {
         }
      );
    }
-
-
-//    this.user = [];
-// this.indexOfEditFormToShow = 0;
-//
-//
-// this.getUsers =function(){
-//
-//  $http({
-//    method: 'GET',
-//    url: '/user'
-//  }).then(
-//    function(response){
-//      controller.user=response.data
-//
-//    },
-//    function(error){
-//
-//    }
-//  )
-// }
-//
-// this.createUser = function(){
-//
-//  $http({
-//    method: 'POST',
-//    url: '/user',
-//    data: {
-//      name: this.name,
-//      location: this.location,
-//      favoritedrink: this.favoritedrink,
-//      work: true,
-//      // freeWifi: true,
-//      // drivethru:true
-//      }
-//    }).then(
-//      function(response){
-//        controller.getUsers();
-//      },
-//      function(error){
-//
-//      }
-//  );
-// }
-//
-// this.editUser = function(user){
-//
-//    $http({
-//      method: 'PUT',
-//      url: '/user/' + user._id,
-//      data: {
-//        name: this.updatedUsername,
-//        location: this.updatedUserlocation,
-//        description: this.updatedUserdrink
-//        // work: true,
-//        // freeWifi: true,
-//        // drivethru:true
-//      }
-//    }).then(
-//      function(response){
-//        controller.getUsers();
-//      },
-//      function(error){
-//
-//      }
-//    );
-//  }
-//
-// this.deleteUser = function(user){
-//
-// $http({
-//   method: 'DELETE',
-//   url: '/user/' + user._id,
-//
-// }).then(
-//   function(response){
-//     controller.getUsers();
-//   },
-//   function(error){
-//    }
-// );
-// }
-////END USER FUNCTIONS//
 
 
   this.getCoffeeshops();
