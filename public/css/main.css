@@ -1,10 +1,9 @@
 @import url('http://getbootstrap.com/dist/css/bootstrap.css');
 
 body {
-  background-image: url(http://i.imgur.com/5VlyDqY.jpg);
+  background-image: url(http://i.imgur.com/IKd68Uj.png);
+  background-position: left top;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-color: tan;
   color: white;
 }
 
@@ -14,6 +13,28 @@ body {
 }
 
 a {
+  color: white;
+}
+
+.loginBg {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+.searchBg {
+  /*max-width: 400px;*/
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  color: #9e3f1b;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.searchBox {
+  padding-top: 40px;
+}
+
+a:hover {
   color: white;
 }
 
