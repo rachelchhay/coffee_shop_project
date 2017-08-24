@@ -126,7 +126,6 @@ app.controller('MyController', ['$http', function($http) {
   // Register function end=================
 
 
-
 // Yelp Response =========================
   this.getYelpResponse = function(){
     $http({
@@ -137,7 +136,17 @@ app.controller('MyController', ['$http', function($http) {
       }
     }).then(
       function(response){
-        console.log(response.data);
+        for(let i = 0; i < (response.data).length; i++){
+          response.data[i].name,
+          response.data[i].rating,
+          response.data[i].price,
+          response.data[i].address1
+          console.log(response.data[i].name,
+          response.data[i].rating,
+          response.data[i].price,
+          response.data[i].address1);
+        }
+
         controller.yelpCoffeeshops = response.data;
         controller.yelpLocation = '';
       },
