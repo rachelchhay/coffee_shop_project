@@ -5,7 +5,7 @@
     <title>Find your coffee shop</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
-    <!-- <script src="../test.js" charset="utf-8"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css" />
   </head>
 
@@ -14,14 +14,14 @@
 
   <body ng-controller ="MyController as ctrl">
     <div class="container-fluid">
-      <h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6>
+      <div class="loginBg"><h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6></div>
 <!-- log in forms -->
           <div ng-hide="ctrl.closeLoginWindow">
             <div class="row">
 
-              <div class="col-sm-3">&nbsp;</div>
+              <div class="col-sm-6">&nbsp;</div>
               <!-- <modal> -->
-                <div class="col-sm-3">
+                <div class="col-sm-3 searchBg">
                   <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
                     <h4>Login</h4>
                     User Name: <input type="text" ng-model="ctrl.username"/><br/>
@@ -30,7 +30,7 @@
                     <input ng-click="ctrl.hideLogin()" type="Submit"  value="Log In">
                   </form>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 searchBg">
                   <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
                     <h4>Register</h4>
                     User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
@@ -41,7 +41,6 @@
                 </div>
               </div>
               <!-- </modal> -->
-              <div class="col-sm-3">&nbsp;</div>
             </div>
 
 
@@ -74,11 +73,18 @@
       </ul>
 
       <!-- Yelp API response. -->
-      <h3>Search for a coffee shop near you:</h3>
-      <form ng-submit="ctrl.getYelpResponse()">
-        Location: <input type="text" placeholder="city, state" ng-model="ctrl.yelpLocation">
-        <input type="submit" value="Search">
-      </form>
+      <div class="row">
+        <div class="col-sm-6">&nbsp;</div>
+        <div class="col-sm-6">
+          <div class="searchBg">
+            <h3>Search for a coffee shop near you:</h3>
+            <form ng-submit="ctrl.getYelpResponse()">
+              <div class="searchBox">Location: <input type="text" placeholder="city, state" ng-model="ctrl.yelpLocation">
+              <input type="submit" value="Search"></div>
+            </form>
+          </div>
+        </div>
+      </div>
       <ul>
         <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index"><h5>{{ yelpCoffeeshop.name }}</h5>
         <h6>Rating: {{ yelpCoffeeshop.rating}}<br/>
