@@ -4,7 +4,7 @@ const Coffeeshop = require('../models/coffeeshops.js');
 const userSchema = mongoose.Schema({
   username: String,
   password: String,
-	coffeeshops: [Coffeeshop.schema]   //STILL TRYING TO LINK DATA//
+	coffeeshops: [Coffeeshop.schema]   
 });
 
 const User = mongoose.model('User', userSchema);

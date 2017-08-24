@@ -18,35 +18,18 @@ const client = yelp.client(process.env.YELP_TOKEN);
 
 const getYelpResponse = (res, term, body) => {
 
-  let yelpResponseName = [];
-  let yelpResponseRating = [];
-  let yelpResponsePrice = [];
-  let yelpResponseLocation = [];
 
-  let yelpResponse = {
-    yelpResponseName,
-    yelpResponseRating,
-    yelpResponsePrice,
-    yelpResponseLocation
-  };
-
-
-
+    let yelpResponse = [];
 
     client.search({
       term: term,
       location: body.location
     }).then(response => {
       for(let i = 0; i < (response.jsonBody.businesses).length; i++) {
-        // yelpResponse.push(response.jsonBody.businesses[i].name
-          // ,
-          // response.jsonBody.businesses[i].rating, response.jsonBody.businesses[i].price, response.jsonBody.businesses[i].location.address1
-        // )
-
-        yelpResponseName.push(response.jsonBody.businesses[i].name);
-        yelpResponseRating.push(response.jsonBody.businesses[i].rating);
-        yelpResponsePrice.push(response.jsonBody.businesses[i].price);
-        yelpResponseLocation.push(response.jsonBody.businesses[i].location.address1)
+        yelpResponse.push(
+          {
+          name: response.jsonBody.businesses[i].name, rating: response.jsonBody.businesses[i].rating, price: response.jsonBody.businesses[i].price, address1: response.jsonBody.businesses[i].location.address1}
+        )
       }
       console.log(yelpResponse);
       res.send(yelpResponse);

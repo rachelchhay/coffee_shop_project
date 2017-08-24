@@ -13,7 +13,6 @@ app.controller('MyController', ['$http', function($http) {
   this.indexOfEditFormToShow = 0;
   this.yelpCoffeeshops = [];
   this.launchLogin = false;
-  this.closeLoginWindow = false;
 
   // Show Login =========================
     this.showLogin = function(){
@@ -74,7 +73,6 @@ app.controller('MyController', ['$http', function($http) {
       }
     )
   }
-
   // Login function end===================
 
   // Register function ===================
@@ -148,7 +146,6 @@ app.controller('MyController', ['$http', function($http) {
   // Register function end=================
 
 
-
 // Yelp Response =========================
   this.getYelpResponse = function(){
     $http({
@@ -159,7 +156,17 @@ app.controller('MyController', ['$http', function($http) {
       }
     }).then(
       function(response){
-        console.log(response);
+        for(let i = 0; i < (response.data).length; i++){
+          response.data[i].name,
+          response.data[i].rating,
+          response.data[i].price,
+          response.data[i].address1
+          console.log(response.data[i].name,
+          response.data[i].rating,
+          response.data[i].price,
+          response.data[i].address1);
+        }
+
         controller.yelpCoffeeshops = response.data;
         controller.yelpLocation = '';
       },
@@ -194,10 +201,9 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops',
       data: {
         name: this.name,
-        coffeeLocation: this.coffeeLocation,
-        description: this.description
-        // freeWifi: true,
-        // drivethru:true
+        rating: this.rating,
+        price: this.price,
+        address1: this.address1
         }
       }).then(
         function(response){
@@ -209,30 +215,6 @@ app.controller('MyController', ['$http', function($http) {
     );
   }
 
-  // this.updateDevMovie = function(todo){
-  //   let NewComplete;
-  //   if(todo.complete === true){
-  //     newComplete = false;
-  //   } else {
-  //       newComplete = true;
-  //     }
-  //     $http({
-  //       method: 'PUT',
-  //       url: '/devMovies/' + devMovie._id,
-  //       data: {
-  //         description: todo.description,
-  //         complete: newComplete
-  //       }
-  //     }).then(
-  //       function(response){
-  //         controller.getDevMovies();
-  //       },
-  //       function(error){
-  //
-  //       }
-  //     );
-  //   }
-
     this.editCoffeeshop = function(coffeeshop){
 
         $http({
@@ -240,10 +222,9 @@ app.controller('MyController', ['$http', function($http) {
           url: '/coffeeshops/' + coffeeshop._id,
           data: {
             name: this.updatedName,
-            location: this.updatedLocation,
-            description: this.updatedDescription
-            // freeWifi: true,
-            // drivethru:true
+            rating: this.updatedRating,
+            price: this.updatedPrice,
+            address1: this.updatedAddress1
           }
         }).then(
           function(response){
