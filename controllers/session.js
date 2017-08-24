@@ -20,8 +20,9 @@ router.post('/login', (req, res, next) => {
                 req.session.message  = '';
                 req.session.username = req.body.username;
                 req.session.logged   = true;
-                console.log(req.session, req.body)
-                res.send(req.session.username);
+                console.log(req.session);
+                console.log(req.body);
+                res.json(req.session.logged);
 
             } else {
               console.log('else in bcrypt compare')
@@ -62,7 +63,7 @@ router.post('/register', (req, res, next) => {
       // lets set up the session in here we can use the same code we created in the login
       req.session.username = user.username;
       req.session.logged   = true;
-      res.json(user);
+      res.json(req.session.logged);
     });
 
 })
