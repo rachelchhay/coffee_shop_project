@@ -26,5 +26,8 @@
     "modal": "^1.2.0",
     "mongoose": "^4.11.7",
     "yelp-fusion": "^1.0.3"
+  },
+  "engines": {
+    "node": "8.2.1"
   }
 }
