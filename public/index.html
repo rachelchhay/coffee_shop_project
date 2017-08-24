@@ -15,30 +15,33 @@
     <div class="container-fluid">
       <h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6>
 <!-- log in forms -->
-        <div class="row">
-          <div class="col-sm-3">&nbsp;</div>
-          <!-- <modal> -->
-          <div class="col-sm-3">
-              <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
-              <h4>Login</h4>
-              User Name: <input type="text" ng-model="ctrl.username"/><br/>
-              Password: <input type="password" ng-model="ctrl.password"/><br/>
-              <br/>
-              <input type= "Submit"  value="Log In">
-            </form>
-          </div>
-          <div class="col-sm-3">
-            <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
-              <h4>Register</h4>
-              User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
-              Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
-              <br/>
-              <input type= "Submit"  value="Register">
-            </form>
-          </div>
-          <!-- </modal> -->
-          <div class="col-sm-3">&nbsp;</div>
-        </div>
+          <div ng-hide="ctrl.closeLoginWindow">
+            <div class="row">
+
+              <div class="col-sm-3">&nbsp;</div>
+              <!-- <modal> -->
+                <div class="col-sm-3">
+                  <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
+                    <h4>Login</h4>
+                    User Name: <input type="text" ng-model="ctrl.username"/><br/>
+                    Password: <input type="password" ng-model="ctrl.password"/><br/>
+                    <br/>
+                    <input ng-click="ctrl.hideLogin()" type="Submit"  value="Log In">
+                  </form>
+                </div>
+                <div class="col-sm-3">
+                  <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
+                    <h4>Register</h4>
+                    User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
+                    Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
+                    <br/>
+                    <input ng-click="ctrl.hideLogin()" type="Submit"  value="Register">
+                  </form>
+                </div>
+              </div>
+              <!-- </modal> -->
+              <div class="col-sm-3">&nbsp;</div>
+            </div>
 
 
 <!-- end log in forms -->
@@ -71,7 +74,10 @@
         <input type="submit" value="Search">
       </form>
       <ul>
-        <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index">{{ yelpCoffeeshop }}</li>
+        <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index"><h5>{{ yelpCoffeeshop.name }}</h5>
+        <h6>Rating: {{ yelpCoffeeshop.rating}}<br/>
+        Price: {{ yelpCoffeeshop.price}}<br/>
+        Address: {{ yelpCoffeeshop.address1 }}</h6></li>
       </ul>
 
       <!-- End of Yelp Response -->
