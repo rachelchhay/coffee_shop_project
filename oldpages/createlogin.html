@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html  ng-app="MyApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <!-- <link rel="stylesheet" href="/css/main.css" /> -->
+  </head>
+
+
+  <!-- CREATE LOGIN ACCOUNT PAGE -->
+
+  <body ng-controller ="MyController as ctrl">
+ </h3>
+    <div class="userList">
+<uL>
+  <li ng-repeat="user in ctrl.user">
+    <span ng-click="ctrl.updateUser(user)"><h5>Name: {{ user.name }}</h5><h5>Location: {{ user.location }}</h5><h5>Favorite Coffee Drink: {{ user.favoritedrink }}</h5><h6>Coffeeshop receommendations: {{ user.coffeeshops.name }}</h5>  </span>
+    <button ng-click="ctrl.deleteUser(user)">Delete this user</button><br/>
+    <a href="#" ng-click="ctrl.indexOfUserEditFormToShow = $index">Edit this user</a>
+        <form ng-if="$index === ctrl.indexOfUserEditFormToShow" ng-submit="ctrl.editUser(user);">
+          <input type="text"  ng-model="ctrl.updatedUsername" placeholder="ctrl.this.name"/>
+          <input type="text"  ng-model="ctrl.updatedUserlocation" placeholder="ctrl.this.location"/>
+          <input type="text"  ng-model="ctrl.updatedUserdrink" placeholder="ctrl.this.updatedUserdrink"/>
+          <input type= "Submit"  value="Update user"></h6>
+          </form>
+        </li>
+      </ul>
+  </div>
+      <form ng-submit="ctrl.createUser()">
+        <h4> Create an account!</h4>
+        Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/>
+        Location: <input type="text"  ng-model="ctrl.location" placeholder="Location"/>
+        What's your favorite coffee drink?: <input type="text"  ng-model="ctrl.favoritedrink" placeholder="Favorite Drink"/>
+        <input type= "Submit"  value="Add"></h6>
+      </form>
+    </li>
+  </ul>
+  <a href="/index.html">Go back to main page</a>
+</div>
+  </body>
+</html>

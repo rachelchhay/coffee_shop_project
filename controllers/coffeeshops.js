@@ -7,6 +7,8 @@ const getYelpResponse = require('../bin/yelp.js');
 // const launchLogin = require('../models/showLogin.js');
 
 
+
+
 router.get('/', function(req, res){
     Coffeeshops.find({}, function(err, foundCoffeeshops){
         res.json(foundCoffeeshops);
@@ -46,23 +48,7 @@ router.post('/getYelpResponse', (req, res) => {
   getYelpResponse(res, 'coffee', req.body);
 });
 
-// Show login ===========================
-router.post('/showLogin', (req, res) => {
-  console.log('hello');
-  res.send();
-});
 
-// end Show login ======================
-
-// Show Create Form ===========================
-router.post('/createForm', (req, res) => {
-  res.send();
-});
-
-// Show Create Form ===========================
-router.post('/openForm', (req, res) => {
-  res.send();
-});
 //ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
 //
 
