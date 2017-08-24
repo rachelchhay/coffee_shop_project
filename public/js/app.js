@@ -33,6 +33,24 @@ app.controller('MyController', ['$http', function($http) {
 
   // End of show login ===================
 
+  // Hide Login =========================
+    this.hideLogin = function(){
+      $http({
+        method: 'POST',
+        url: '/coffeeshops/showLogin'
+      }).then(
+        function(response){
+          controller.closeLoginWindow = true;
+          console.log('this works');
+        },
+        function(error){
+          console.log(error);
+        }
+      )
+    }
+
+  // End of hide login ===================
+
   // Login function ======================
   this.login = function(username, password){
     $http({
@@ -48,6 +66,7 @@ app.controller('MyController', ['$http', function($http) {
         controller.foundUser = response.data;
         controller.username = '';
         controller.password = '';
+        hideLogin();
       },
       function(error){
         console.log(error);
@@ -71,6 +90,7 @@ app.controller('MyController', ['$http', function($http) {
         controller.createUser = response.data;
         controller.registerUsername = '';
         controller.registerPassword = '';
+        hideLogin();
       },
       function(error){
         console.log(error);
