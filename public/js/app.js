@@ -245,6 +245,10 @@ app.controller('MyController', ['$http', function($http) {
         }).then(
           function(response){
             controller.getCoffeeshops();
+            controller.name = ''
+            controller.rating = ''
+            controller.price = ''
+            controller.address1 = ''
           },
           function(error){
 
