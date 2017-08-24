@@ -11,6 +11,7 @@ app.controller('MyController', ['$http', function($http) {
   this.yelpCoffeeshops = [];
   this.launchLogin = false;
   this.indexOfCoffeeshop;
+  this.openForm = true;
 
 
   // Show Login =========================
@@ -198,13 +199,29 @@ app.controller('MyController', ['$http', function($http) {
       url: '/coffeeshops/createForm'
     }).then(
       function(response){
-        controller.hideCreateForm = true;
+        controller.hideForm = true;
       },
       function(error){
         console.log(error);
       }
     )
   }
+
+  this.openCreateForm = function(){
+
+    $http({
+      method: 'POST',
+      url: '/coffeeshops/openForm'
+    }).then(
+      function(response){
+        controller.hideForm = false;
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+
 
   this.createCoffeeshop = function(){
 

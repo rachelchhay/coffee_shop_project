@@ -59,6 +59,10 @@ router.post('/createForm', (req, res) => {
   res.send();
 });
 
+// Show Create Form ===========================
+router.post('/openForm', (req, res) => {
+  res.send();
+});
 //ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
 //
 
