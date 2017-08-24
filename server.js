@@ -42,6 +42,10 @@ app.use('/user', UsersController);
 const sessionController = require('./controllers/session.js');
 app.use('/session', sessionController);
 
+// Fixes mongoose promise deprecation warning
+mongoose.Promise = global.Promise;
+
+
 var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/coffeeshop';
 mongoose.connect(mongoUri, {
   useMongoClient: true

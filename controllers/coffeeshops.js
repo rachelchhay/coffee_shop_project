@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Coffeeshops = require('../models/coffeeshops.js');
+const User = require('../models/user.js');
 const getYelpResponse = require('../bin/yelp.js');
-hLogin = require('../models/showLogin.js');
+
+// const launchLogin = require('../models/showLogin.js');
+
 
 
 
@@ -14,7 +17,13 @@ router.get('/', function(req, res){
 
 router.post('/', (req,res)=>{
     Coffeeshops.create(req.body, function(err, createdCoffeeshop){
-        res.json(createdCoffeeshop);
+      User.findOne({username: req.session.username}, (err, foundUser) => {
+        console.log(foundUser);
+        foundUser.coffeeshops.push(createdCoffeeshop)
+        foundUser.save((err, data) => {
+          res.json(createdCoffeeshop);
+        });
+      });
   });
 });
 
@@ -37,14 +46,23 @@ router.put('/:id', (req, res)=>{
 router.post('/getYelpResponse', (req, res) => {
   console.log('req.body: ', req.body);
   getYelpResponse(res, 'coffee', req.body);
-})
+});
 
-
-//ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
-//
+// Show login ===========================
 router.post('/showLogin', (req, res) => {
   console.log('hello');
   res.send();
-})
+});
+
+// end Show login ======================
+
+// Show Create Form ===========================
+router.post('/createForm', (req, res) => {
+  res.send();
+});
+
+//ALL ROUTES ABOVE WORK. PLEASE DON'T CHANGE CODE WITHOUT CHECKING//
+//
+
 
 module.exports = router;

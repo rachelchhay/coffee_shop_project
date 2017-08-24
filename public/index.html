@@ -15,30 +15,33 @@
     <div class="container-fluid">
       <h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6>
 <!-- log in forms -->
-        <div class="row">
-          <div class="col-sm-3">&nbsp;</div>
-          <!-- <modal> -->
-          <div class="col-sm-3">
-              <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
-              <h4>Login</h4>
-              User Name: <input type="text" ng-model="ctrl.username"/><br/>
-              Password: <input type="password" ng-model="ctrl.password"/><br/>
-              <br/>
-              <input type= "Submit"  value="Log In">
-            </form>
-          </div>
-          <div class="col-sm-3">
-            <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
-              <h4>Register</h4>
-              User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
-              Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
-              <br/>
-              <input type= "Submit"  value="Register">
-            </form>
-          </div>
-          <!-- </modal> -->
-          <div class="col-sm-3">&nbsp;</div>
-        </div>
+          <div ng-hide="ctrl.closeLoginWindow">
+            <div class="row">
+
+              <div class="col-sm-3">&nbsp;</div>
+              <!-- <modal> -->
+                <div class="col-sm-3">
+                  <form ng-if="ctrl.launchLogin" ng-submit="ctrl.login()">
+                    <h4>Login</h4>
+                    User Name: <input type="text" ng-model="ctrl.username"/><br/>
+                    Password: <input type="password" ng-model="ctrl.password"/><br/>
+                    <br/>
+                    <input ng-click="ctrl.hideLogin()" type="Submit"  value="Log In">
+                  </form>
+                </div>
+                <div class="col-sm-3">
+                  <form ng-if="ctrl.launchLogin" ng-submit="ctrl.register()">
+                    <h4>Register</h4>
+                    User Name: <input type="text" ng-model="ctrl.registerUsername"/><br/>
+                    Password: <input type="password" ng-model="ctrl.registerPassword"/><br/>
+                    <br/>
+                    <input ng-click="ctrl.hideLogin()" type="Submit"  value="Register">
+                  </form>
+                </div>
+              </div>
+              <!-- </modal> -->
+              <div class="col-sm-3">&nbsp;</div>
+            </div>
 
 
 <!-- end log in forms -->
@@ -47,10 +50,11 @@
       <ul>
         <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
           <span ng-click="ctrl.updateCoffeeshop(coffeeshop);">
-            <h5>Shop Name: {{ coffeeshop.name }}</h5>
+            <h5>Coffee Shop Name: {{ coffeeshop.name }}</h5>
             <h5>Rating: {{ coffeeshop.rating }}</h5>
-            <h5>Price: {{ coffeeshop.price }}</h5></span>
-            <!-- <h6>Created By: <a href="/user/user._id">{{user.name}}</a></h6><br/> -->
+            <h5>Price: {{ coffeeshop.price }}</h5>
+            <h5>Address: {{ coffeeshop.address1 }} </h5>
+          </span>
             <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
             <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
             <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
@@ -70,70 +74,28 @@
         <input type="submit" value="Search">
       </form>
       <ul>
-        <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index">{{ yelpCoffeeshop }}</li>
+        <li ng-repeat="yelpCoffeeshop in ctrl.yelpCoffeeshops track by $index"><h5>{{ yelpCoffeeshop.name }}</h5>
+        <h6>Rating: {{ yelpCoffeeshop.rating}}<br/>
+        Price: {{ yelpCoffeeshop.price}}<br/>
+        Address: {{ yelpCoffeeshop.address1 }}</h6>
+
+        <!-- Create shop button and form -->
+
+        <button type="button" ng-click="ctrl.indexOfCoffeeshop = $index">Add Coffeeshop</button>
+
+        <form ng-if="$index === ctrl.indexOfCoffeeshop" ng-submit="ctrl.createCoffeeshop()">
+          Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/> <br>
+          Rating: <input type="text"  ng-model="ctrl.rating" placeholder="Rate out of 5"/> <br>
+          Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/> <br>
+          Address: <input type="text" ng-model="ctrl.address1" placeholder="Address"> <br>
+          <input type= "Submit" value="Submit" >
+        </form>
+
+      </li>
       </ul>
 
       <!-- End of Yelp Response -->
     </div>
-    <form ng-submit="ctrl.createCoffeeshop()">
-      <h4> Recommend a New Shop!</h4>
-      Coffee Shop Name: <input type="text"  ng-model="ctrl.name" placeholder="Name"/>
-      Rating: <input type="number"  ng-model="ctrl.rating" placeholder="Rate out of 5"/>
-      Price: <input type="text"  ng-model="ctrl.price" placeholder="Price using $"/>
-      Address: <input type="text" ng-model="ctrl.address1" placeholder="Address">
-      <input type= "Submit"  value="Add"></h6>
-    </form>
-    <!-- <a href="/createlogin.html">create new user account</a> -->
-
-
-<!-- //socket chat code below// -->
-
-    /*<style>
-        #chatbox {display: flex; padding: 20px; align-content: flex-start;}
-        { margin: 0; padding: 0; box-sizing: border-box; }
-        #chatbody { font: 13px Helvetica, Arial; background-color: azure;}
-        #chatform { background-color: black; padding: 3px; position: fixed; bottom: 0; height: 100%; width: 300px; }
-        #chatforminput { border: 0; padding: 10px; width: 300px; margin-right: .5%; }
-        #chatformbutton { width: 40px; background: rgb(130, 224, 255); border: none; padding: 10px; }*/
-        #messages { list-style-type: none; margin: 0; padding: 0; flex-wrap: wrap;  }
-        #messages li { padding: 5px 10px; font: black; flex-wrap: wrap; }
-        #messages li:nth-child(odd) { flex-wrap: wrap; background color: rgba (123, 36, 28, .7); font: black }
-      </style>
-
-
-<div id="chatcheck">Show Chat: <input type="checkbox" ng-model="socketbox"></div></br>
-  <div id='testbox' ng-show="socketbox">
-    <h3> Talk Coffee with others</h3>
-    <ul id="messages"></ul>
-    <div id='chatbox'>
-      <form id="chat-form" action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-  </div>
-  </div>
-
-  <script src="../index.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-  <script>
-    $(function () {
-      console.log('testingsocket1');
-      var socket = io();
-      $('#chat-form').submit(function(){
-        console.log('testingsubmit');
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        console.log('testingsocketon');
-        $('#messages').append($('<li>').text(msg));
-      });
-    });
-  </script>*/
-
-  <!-- //end socket chat code// -->
-
 
   </body>
 

@@ -7,12 +7,11 @@ app.controller('MyController', ['$http', function($http) {
   //COFFESHOP FUNCTIONS  -- WORKING///
   //-------//
   this.coffeeshops = [];
-
-  this.indexOfUserEditFormToShow = 0;
-
   this.indexOfEditFormToShow = 0;
   this.yelpCoffeeshops = [];
   this.launchLogin = false;
+  this.indexOfCoffeeshop;
+
 
   // Show Login =========================
     this.showLogin = function(){
@@ -33,6 +32,24 @@ app.controller('MyController', ['$http', function($http) {
 
   // End of show login ===================
 
+  // Hide Login =========================
+    this.hideLogin = function(){
+      $http({
+        method: 'POST',
+        url: '/coffeeshops/showLogin'
+      }).then(
+        function(response){
+          controller.closeLoginWindow = true;
+          console.log('this works');
+        },
+        function(error){
+          console.log(error);
+        }
+      )
+    }
+
+  // End of hide login ===================
+
   // Login function ======================
   this.login = function(username, password){
     $http({
@@ -48,6 +65,7 @@ app.controller('MyController', ['$http', function($http) {
         controller.foundUser = response.data;
         controller.username = '';
         controller.password = '';
+        hideLogin();
       },
       function(error){
         console.log(error);
@@ -71,6 +89,7 @@ app.controller('MyController', ['$http', function($http) {
         controller.createUser = response.data;
         controller.registerUsername = '';
         controller.registerPassword = '';
+        hideLogin();
       },
       function(error){
         console.log(error);
@@ -124,7 +143,6 @@ app.controller('MyController', ['$http', function($http) {
     )
   }
   // Register function end=================
-
 
 
 // Yelp Response =========================
@@ -137,7 +155,13 @@ app.controller('MyController', ['$http', function($http) {
       }
     }).then(
       function(response){
-        console.log(response.data.name);
+        for(let i = 0; i < (response.data).length; i++){
+          response.data[i].name,
+          response.data[i].rating,
+          response.data[i].price,
+          response.data[i].address1
+        }
+
         controller.yelpCoffeeshops = response.data;
         controller.yelpLocation = '';
       },
@@ -165,6 +189,23 @@ app.controller('MyController', ['$http', function($http) {
     )
   }
 
+  // Create form function ==================
+
+  this.hideCreateForm = function(){
+
+    $http({
+      method: 'POST',
+      url: '/coffeeshops/createForm'
+    }).then(
+      function(response){
+        controller.hideCreateForm = true;
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
+
   this.createCoffeeshop = function(){
 
     $http({
@@ -179,6 +220,10 @@ app.controller('MyController', ['$http', function($http) {
       }).then(
         function(response){
           controller.getCoffeeshops();
+          controller.name = ''
+          controller.rating = ''
+          controller.price = ''
+          controller.address1 = ''
         },
         function(error){
 
@@ -200,6 +245,10 @@ app.controller('MyController', ['$http', function($http) {
         }).then(
           function(response){
             controller.getCoffeeshops();
+            controller.name = ''
+            controller.rating = ''
+            controller.price = ''
+            controller.address1 = ''
           },
           function(error){
 
@@ -223,86 +272,86 @@ app.controller('MyController', ['$http', function($http) {
    }
 
 
-   this.user = [];
-this.indexOfEditFormToShow = 0;
-
-
-this.getUsers =function(){
-
- $http({
-   method: 'GET',
-   url: '/user'
- }).then(
-   function(response){
-     controller.user=response.data
-
-   },
-   function(error){
-
-   }
- )
-}
-
-this.createUser = function(){
-
- $http({
-   method: 'POST',
-   url: '/user',
-   data: {
-     name: this.name,
-     location: this.location,
-     favoritedrink: this.favoritedrink,
-     work: true,
-     // freeWifi: true,
-     // drivethru:true
-     }
-   }).then(
-     function(response){
-       controller.getUsers();
-     },
-     function(error){
-
-     }
- );
-}
-
-this.editUser = function(user){
-
-   $http({
-     method: 'PUT',
-     url: '/user/' + user._id,
-     data: {
-       name: this.updatedUsername,
-       location: this.updatedUserlocation,
-       description: this.updatedUserdrink
-       // work: true,
-       // freeWifi: true,
-       // drivethru:true
-     }
-   }).then(
-     function(response){
-       controller.getUsers();
-     },
-     function(error){
-
-     }
-   );
- }
-
-this.deleteUser = function(user){
-
-$http({
-  method: 'DELETE',
-  url: '/user/' + user._id,
-
-}).then(
-  function(response){
-    controller.getUsers();
-  },
-  function(error){
-   }
-);
-}
+//    this.user = [];
+// this.indexOfEditFormToShow = 0;
+//
+//
+// this.getUsers =function(){
+//
+//  $http({
+//    method: 'GET',
+//    url: '/user'
+//  }).then(
+//    function(response){
+//      controller.user=response.data
+//
+//    },
+//    function(error){
+//
+//    }
+//  )
+// }
+//
+// this.createUser = function(){
+//
+//  $http({
+//    method: 'POST',
+//    url: '/user',
+//    data: {
+//      name: this.name,
+//      location: this.location,
+//      favoritedrink: this.favoritedrink,
+//      work: true,
+//      // freeWifi: true,
+//      // drivethru:true
+//      }
+//    }).then(
+//      function(response){
+//        controller.getUsers();
+//      },
+//      function(error){
+//
+//      }
+//  );
+// }
+//
+// this.editUser = function(user){
+//
+//    $http({
+//      method: 'PUT',
+//      url: '/user/' + user._id,
+//      data: {
+//        name: this.updatedUsername,
+//        location: this.updatedUserlocation,
+//        description: this.updatedUserdrink
+//        // work: true,
+//        // freeWifi: true,
+//        // drivethru:true
+//      }
+//    }).then(
+//      function(response){
+//        controller.getUsers();
+//      },
+//      function(error){
+//
+//      }
+//    );
+//  }
+//
+// this.deleteUser = function(user){
+//
+// $http({
+//   method: 'DELETE',
+//   url: '/user/' + user._id,
+//
+// }).then(
+//   function(response){
+//     controller.getUsers();
+//   },
+//   function(error){
+//    }
+// );
+// }
 ////END USER FUNCTIONS//
 
 
