@@ -49,14 +49,13 @@
     <div class="coffeeList">
       <ul>
         <li ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
-          <span ng-click="ctrl.updateCoffeeshop(coffeeshop);">
             <h5>Coffee Shop Name: {{ coffeeshop.name }}</h5>
             <h5>Rating: {{ coffeeshop.rating }}</h5>
             <h5>Price: {{ coffeeshop.price }}</h5>
             <h5>Address: {{ coffeeshop.address1 }} </h5>
-          </span>
-            <button ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
-            <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
+
+            <button ng-if="ctrl.isLoggedIn" ng-click="ctrl.deleteCoffeeshop(coffeeshop)">Delete this shop</button><br/>
+            <a href="#" ng-if="ctrl.isLoggedIn" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this shop</a>
             <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editCoffeeshop(coffeeshop);">
               <input type="text"  ng-model="ctrl.updatedName" placeholder="name"/>
               <input type="number"  ng-model="ctrl.updatedRating" placeholder="rating"/>

@@ -62,9 +62,14 @@ app.controller('MyController', ['$http', function($http) {
     }).then(
       function(response){
         console.log(response.data);
+        // console.log(response.data.session.logged);
         controller.foundUser = response.data;
         controller.username = '';
         controller.password = '';
+
+        if(response.data){
+          controller.isLoggedIn = true;
+        }
         hideLogin();
       },
       function(error){
