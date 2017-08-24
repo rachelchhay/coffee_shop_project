@@ -17,12 +17,14 @@ a {
 
 #chatcheck{
 float: right;
+background-color: rgba(100,30,22, .7);
+padding: 20px, 20px;
 }
 
 #testbox{
-  background-color: red;
+  background-color: rgba(100,30,22, .7);
   width: 400px;
-  height: 300px;
+  height: 90%;
   padding: 20px;
   float: right;
 }
