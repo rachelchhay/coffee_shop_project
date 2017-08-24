@@ -5,6 +5,7 @@
     <title>Find your coffee shop</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
+    <!-- <script src="../test.js" charset="utf-8"></script> -->
     <link rel="stylesheet" href="/css/main.css" />
   </head>
 
@@ -98,5 +99,55 @@
 
       <!-- End of Yelp Response -->
     </div>
+
+
+<!-- socket code below -->
+     <style>
+            #chatbox {display: flex; padding: 20px; align-content: flex-start;}
+            { margin: 0; padding: 0; box-sizing: border-box; }
+            #chatbody { font: 13px Helvetica, Arial; background-color: azure;}
+            #chatform { background-color: black; padding: 3px; position: fixed; bottom: 0; height: 100%; width: 300px; }
+            #chatforminput { border: 0; padding: 10px; width: 300px; margin-right: .5%; }
+            #chatformbutton { width: 40px; background: rgb(130, 224, 255); border: none; padding: 10px; }*/
+            #messages { list-style-type: none; margin: 0; padding: 0; flex-wrap: wrap;  }
+            #messages li { padding: 5px 10px; font: black; flex-wrap: wrap; }
+            #messages li:nth-child(odd) { flex-wrap: wrap; background color: rgba (123, 36, 28, .7); font: black }
+          </style>
+
+
+    <div id="chatcheck">Show Chat: <input type="checkbox" ng-model="socketbox"></div></br>
+      <div id='testbox' ng-show="socketbox">
+        <h3> Talk Coffee with others</h3>
+        <ul id="messages"></ul>
+        <div id='chatbox'>
+          <form id="chat-form" action="">
+          <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
+      </div>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+      <script>
+        $(function () {
+          console.log('testingsocket1');
+          var socket = io();
+          $('#chat-form').submit(function(){
+            console.log('testingsubmit');
+            socket.emit('chat message', $('#m').val());
+            $('#m').val('');
+            return false;
+          });
+          socket.on('chat message', function(msg){
+            console.log('testingsocketon');
+            $('#messages').append($('<li>').text(msg));
+          });
+        });
+      </script>
+<!-- end socket code -->
+
   </body>
+
+
+
 </html>
