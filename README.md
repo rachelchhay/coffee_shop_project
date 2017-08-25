@@ -22,3 +22,5 @@ https://coffeeshop-search-app.herokuapp.com/
 - Admin account to delete?
 - Socket.io: username becomes the handle when chatting
 - CSS: change fonts, remove the white rectangle that appears when you shrink the screen
+
+Original wireframe: https://xd.adobe.com/view/cf049d5c-faed-44b7-aaa1-a18956d12b83/
