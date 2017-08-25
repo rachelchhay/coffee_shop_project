@@ -7,6 +7,10 @@ body {
   color: white;
 }
 
+h1 {
+  text-align: center;
+}
+
 .loginLink {
   text-align: right;
   padding: 10px;
