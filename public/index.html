@@ -14,7 +14,9 @@
 
   <body ng-controller ="MyController as ctrl">
     <div class="container-fluid">
-      <div class="loginBg"><h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6></div>
+      <div class="loginBg"><h6 class="loginLink"><a href ng-click="ctrl.showLogin()">Log In / Register</a></h6>
+        <a href="#" ng-if="ctrl.isLoggedIn" ng-click="ctrl.logout()">Logout</a>
+      </div>
 <!-- log in forms -->
           <div ng-hide="ctrl.closeLoginWindow">
             <div class="row">

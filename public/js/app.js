@@ -84,7 +84,26 @@ app.controller('MyController', ['$http', function($http) {
   }
   // Register function end=================
 
-
+  // Logout function ======================
+  this.logout = function(username, password){
+    $http({
+      method: 'GET',
+      url: '/session/logout',
+      data: {
+        username: this.logoutUsername,
+        password: this.logoutPassword
+      }
+    }).then(
+      function(response){
+        console.log("LOGOUT");
+        controller.isLoggedIn = false;
+        location.reload(true)
+      },
+      function(error){
+        console.log(error);
+      }
+    )
+  }
 
 // Yelp Response =========================
   this.getYelpResponse = function(){
