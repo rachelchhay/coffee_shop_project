@@ -104,7 +104,7 @@
 
           <!-- socket code below -->
 
-          <!-- <div id="chatcheck">Show Chat: <input type="checkbox" ng-model="socketbox"></div></br>
+          <div id="chatcheck">Show Chat: <input type="checkbox" ng-model="socketbox"></div></br>
             <div id='testbox' ng-show="socketbox">
               <h3> Talk Coffee with others</h3>
               <ul id="messages"></ul>
@@ -132,11 +132,11 @@
                   $('#messages').append($('<li>').text(msg));
                 });
               });
-            </script> -->
+            </script>
       <!-- end socket code -->
         </div>
         <div class="col-sm-8">
-          <h4 ng-if="ctrl.isLoggedIn" class="coffeeshopListHeader">My Coffee Shops</h4>
+          <h4 ng-if="ctrl.isLoggedIn" class="coffeeshopListHeader">Top Coffee Shops</h4>
           <div ng-if="ctrl.isLoggedIn" class="coffeeList myCoffeeshopsList threeColumns">
             <ul>
               <li class="listLi coffeeshopListing" ng-repeat="coffeeshop in ctrl.coffeeshops track by $index">
