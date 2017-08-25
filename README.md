@@ -21,4 +21,4 @@ https://coffeeshop-search-app.herokuapp.com/
 - When the user logs in, they can only edit/delete their shops
 - Admin account to delete?
 - Socket.io: username becomes the handle when chatting
-- CSS: change fonts
+- CSS: change fonts, remove the white rectangle that appears when you shrink the screen
