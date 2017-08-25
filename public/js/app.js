@@ -48,6 +48,7 @@ app.controller('MyController', ['$http', function($http) {
       },
       function(error){
         console.log(error);
+        console.log(response.data);
       }
     )
   }
