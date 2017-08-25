@@ -26,8 +26,15 @@ a {
   text-align: center;
   padding: 20px;
   margin: 0 auto;
-  color: #9e3f1b;
+  color: #565656;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.searchBtn {
+  background-color: #565656;
+  border: 0;
+  color: white;
+  padding: 5px 15px;
 }
 
 .searchBox {
@@ -38,22 +45,146 @@ a:hover {
   color: white;
 }
 
-#chatcheck{
-float: right;
-background-color: rgba(100,30,22, .7);
-padding: 20px, 20px;
+.loginForm {
+  text-align: right;
+  padding-right: 30px;
+  color: #76323f;
 }
 
+.loginBtn {
+  background-color: #76323f;
+  border: 0;
+  color: white;
+  padding: 5px 15px;
+}
 
+.coffeeshopList {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 0;
+  color: black;
+}
 
-#testbox{
-  background-color: rgba(100,30,22, .7);
+.listLi {
+  list-style: none;
+  display: inline-block;
+}
+
+.threeColumns{
+    -webkit-column-gap: 5px;
+       -moz-column-gap: 5px;
+            column-gap: 5px;
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+}
+
+.coffeeshopListing{
+  padding-top: 20px;
+}
+
+.coffeeshopName {
+  color: #76323f;
+}
+
+.coffeeshopInfo {
+  color: #565656;
+}
+
+.coffeeshopBtn {
+  background-color: #d7cec7;
+  color: #565656;
+  border: 0;
+  padding: 5px 15px;
+}
+
+.coffeeshopListHeader {
+  color: black;
+  padding: 40px 20px 20px 20px;
+}
+
+.myCoffeeshopsList {
+  background-color: rgba(86, 86, 86, 0.6);
+  color: white;
+  padding-bottom: 20px;
+}
+
+#chatcheck {
+  float: left;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+}
+
+#testbox {
+  background-color: rgba(0, 0, 0, 0.7);
   width: 400px;
   height: 90%;
   padding: 20px;
-  float: right;
+  float: left;
 }
 
-#chatheader{
+#chatBtn {
+  background-color: #d7cec7;
+  color: #565656;
+  border: 0;
+  padding: 5px 15px;
+  margin-left: 10px;
+}
+
+#chatheader {
   color: #F4F7A9;
+}
+
+#chatbox {
+  display: flex;
+  padding: 20px;
+  align-content:
+  flex-start;
+}
+/*{ margin: 0; padding: 0; box-sizing: border-box; }*/
+
+#chatbody {
+  font: 13px Helvetica, Arial;
+  background-color: azure;
+}
+
+#chatform {
+  background-color: black;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 300px;
+}
+
+#chatforminput {
+  border: 0;
+  padding: 10px;
+  width: 300px;
+  margin-right: .5%;
+}
+
+#chatformbutton {
+  width: 40px;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 10px;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+#messages li {
+  padding: 5px 10px;
+  font: black;
+  flex-wrap: wrap;
+}
+
+#messages li:nth-child(odd) {
+  flex-wrap: wrap;
+  background color: rgba (123, 36, 28, .7);
+  font: black
 }
